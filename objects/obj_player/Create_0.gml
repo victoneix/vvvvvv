@@ -1,4 +1,4 @@
-vel = 3;
+vel = 2;
 velh = 0;
 velv = 0;
 grav = 1;
@@ -9,7 +9,7 @@ moving = function(){
 	
 	velh = (_right - _left)*vel
 	velv += grav;
-	velv = clamp(velv, -4, 4);
+	velv = clamp(velv, -3, 3);
 	
 	if(place_meeting(x+velh, y, obj_collision)){
 		while(!place_meeting(x+sign(velh), y, obj_collision)){
