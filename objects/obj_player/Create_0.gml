@@ -1,4 +1,4 @@
-vel = 2;
+vel = 3;
 velh = 0;
 velv = 0;
 grav = 1;
@@ -6,12 +6,10 @@ grav = 1;
 moving = function(){
 	var _right = keyboard_check(ord("D"));
 	var _left = keyboard_check(ord("A"));
-	var _up = keyboard_check(ord("W"));
-	var _down = keyboard_check(ord("S"));
 	
 	velh = (_right - _left)*vel
 	velv += grav;
-	velv = clamp(velv, -3, 3);
+	velv = clamp(velv, -4, 4);
 	
 	if(place_meeting(x+velh, y, obj_collision)){
 		while(!place_meeting(x+sign(velh), y, obj_collision)){
@@ -28,8 +26,10 @@ moving = function(){
 		velv = 0;
 	}
 	y += velv;
-	
+	var _place = place_meeting(x, y+1, obj_collision) || place_meeting(x, y-1, obj_collision);
 	if(keyboard_check_pressed(vk_space)){
-		grav *= -1;
+		if(_place){
+			grav *= -1;
+		}
 	}
 }
