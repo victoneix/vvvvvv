@@ -8,7 +8,13 @@ draw_set_halign(2);
 draw_set_valign(2);
 draw_set_font(_ui);
 draw_text_ext_transformed(cam_w, cam_h-30, "30:00", 0, 999, 1.8, 1.8, 0);
-draw_text_ext_transformed(cam_w, cam_h-15, "000000000", 0, 999, 1.8, 1.8, 0);
+draw_text_ext_transformed(cam_w, cam_h-15, "0000000", 0, 999, 1.8, 1.8, 0);
 draw_set_font(-1);
 draw_set_halign(0);
 draw_set_valign(0);
+
+if(obj_player.dead < 60){
+	draw_set_color(c_black);
+	draw_rectangle(0, 0, cam_w, cam_h, 0);
+	draw_set_color(c_white);
+}
